@@ -2,11 +2,11 @@
 # Site Configuration
 # ==================
 
-#- hosts: zookeepers 
-#  user: root
-#  roles:
-#    - { role: common, tags: ["common"] }
-#    - { role: zookeeper, tags: ["zookeeper"] }
+- hosts: zookeepers
+  user: root
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: zookeeper, tags: ["zookeeper"] }
 
 - hosts: codis-dashboard
   user: root

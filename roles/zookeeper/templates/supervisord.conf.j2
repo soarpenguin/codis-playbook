@@ -21,16 +21,10 @@ supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 [supervisorctl]
 serverurl=unix:///var/tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 
-[program:consul-server]
-process_name = consul-%(process_num)s
-command = bash {{ program_dir }}/consul-server/consul/consul_control -t server start
+[program:zookeeper]
+process_name = zk-%(process_num)s
+command = /etc/init.d/zookeeper-server start
 autostart = true
 numprocs_start = 10000
 numprocs = 1
 
-[program:mesos-consul]
-process_name = mesos-consul-%(process_num)s
-command = bash {{ program_dir }}/mesos-consul/mesos-consul/start_mesos-consul.sh
-autostart = true
-numprocs_start = 10000
-numprocs = 1
