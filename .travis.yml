@@ -1,0 +1,14 @@
+language: python
+
+sudo: required
+python: "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python-apt
+
+install:
+  - pip install ansible==1.9.1
+
+script:
+  - ansible-playbook --syntax-check --list-tasks -i hosts site.yml
