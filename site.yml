@@ -1,0 +1,30 @@
+---
+# Site Configuration
+# ==================
+
+#- hosts: zookeepers 
+#  user: root
+#  roles:
+#    - { role: common, tags: ["common"] }
+#    - { role: zookeeper, tags: ["zookeeper"] }
+
+- hosts: codis-dashboard
+  user: root
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: codis-dashboard, tags: ["codis-dashboard"] }
+
+- hosts: codis-proxys
+  user: root
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: codis-proxys, tags: ["codis-proxys"] }
+
+- hosts: codis-servers
+  user: root
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: codis-servers, redis_port: 6379, tags: ["codis-servers"] }
+    - { role: codis-servers, redis_port: 6380, tags: ["codis-servers"] }
+
+

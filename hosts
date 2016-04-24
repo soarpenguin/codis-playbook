@@ -1,0 +1,22 @@
+# Codis inventory file
+#
+####### Must set diff zoo_id for every host like: zoo_id=1
+[zookeepers]
+a01.test.com         ansible_ssh_host=10.11.2.17         ansible_ssh_user=root ansible_connection=paramiko zoo_id=1
+a02.test.com         ansible_ssh_host=10.11.2.18         ansible_ssh_user=root ansible_connection=paramiko zoo_id=2
+a03.test.com         ansible_ssh_host=10.11.2.19         ansible_ssh_user=root ansible_connection=paramiko zoo_id=3
+
+[codis-dashboard]
+a01.test.com         ansible_ssh_host=10.11.2.17         ansible_ssh_user=root ansible_ssh_pass=1 ansible_connection=paramiko
+
+####### Must set diff proxy_id for every host like: proxy_id=1
+[codis-proxys]
+a01.test.com         ansible_ssh_host=10.11.2.17         ansible_ssh_user=root ansible_connection=paramiko proxy_id=1 
+a02.test.com         ansible_ssh_host=10.11.2.18         ansible_ssh_user=root ansible_connection=paramiko proxy_id=2
+a03.test.com         ansible_ssh_host=10.11.2.19         ansible_ssh_user=root ansible_connection=paramiko proxy_id=3
+
+[codis-servers]
+a01.test.com         ansible_ssh_host=10.11.2.17         ansible_ssh_user=root ansible_connection=paramiko
+a02.test.com         ansible_ssh_host=10.11.2.18         ansible_ssh_user=root ansible_connection=paramiko
+a03.test.com         ansible_ssh_host=10.11.2.19         ansible_ssh_user=root ansible_connection=paramiko
+

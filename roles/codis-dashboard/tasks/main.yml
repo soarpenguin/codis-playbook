@@ -1,0 +1,16 @@
+---
+# file:roles/codis-dashboard/tasks/main.yml
+
+- name: Install and start server of {{ module }}
+  shell: chdir=/opt {{ item }}
+  with_items:
+    - "mkdir -p {{program_dir}}/{{module}}"
+    - "[ -f {{program_dir}}/{{module}}/codis-config ] || ( cd {{program_dir}}/{{module}} && wget -N {{download_url}}/codis/codis.tar.gz && tar -zxf codis.tar.gz )"
+  ignore_errors: no
+
+- name: Setup {{ module }} cfg file.
+  template: src=config.ini.j2 dest={{ program_dir }}/{{ module }}/config.ini mode=0644
+
+# supervisor
+#- name: Setup supervisor conf for {{ module }}
+#  template: src=supervisord.conf.j2 dest=/etc/supervisord.conf mode=0644

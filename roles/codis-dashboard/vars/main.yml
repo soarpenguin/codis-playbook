@@ -1,0 +1,4 @@
+---
+# file:roles/codis-dashboard/vars/main.yml
+
+module: codis-dashboard

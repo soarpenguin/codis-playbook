@@ -1,0 +1,4 @@
+---
+# file:roles/codis-proxy/vars/main.yml
+
+module: codis-proxy

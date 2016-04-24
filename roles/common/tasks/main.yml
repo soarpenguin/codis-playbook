@@ -1,0 +1,17 @@
+---
+# file:roles/common/tasks/main.yml
+
+- name: Make dirs for all host.
+  shell: chdir=/opt {{ item }}
+  with_items:
+    - "mkdir -p {{ program_dir }}"
+    - "mkdir -p {{ opbin_dir }}"
+    - "mkdir -p {{ opdir_dir }}"
+    - "mkdir -p {{ opt_log_dir }}"
+  ignore_errors: yes
+
+- name: Install supervisor for all hosts
+  shell: chdir=/opt {{ item }}
+  with_items:
+    - "cd {{ opdir_dir }} && rm -rf supervisor && git clone https://github.com/Open-Party/supervisor.git && cd supervisor/ && bash supervisor-install.sh"
+    - "mkdir -p {{ opt_log_dir }}/supervisor"

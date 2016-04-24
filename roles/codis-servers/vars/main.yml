@@ -1,0 +1,4 @@
+---
+# file:roles/codis-server/vars/main.yml
+
+module: codis-server

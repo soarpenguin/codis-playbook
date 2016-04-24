@@ -1,0 +1,30 @@
+---
+# file:roles/zookeeper/tasks/main.yml
+
+- name: Install jdk for {{ module }}
+  shell: chdir=/opt {{ item }}
+  with_items:
+    - "yum install -y java-1.8.0-openjdk"
+    - "mkdir -p {{ program_dir }}/{{ module }}"
+    - "yum install -y zookeeper.x86_64 zookeeper-server.x86_64 --nogpgcheck"
+  ignore_errors: yes
+
+- name: Setup {{ module }} myid file.
+  template: src=zoo_id.j2 dest=/etc/zookeeper/conf.dist/myid mode=0644
+
+- name: Setup {{ module }} cfg file.
+  template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf.dist/zoo.cfg mode=0644
+
+- name: Copy init_zookeeper.sh to remote host
+  template: src=init_zookeeper.sh.j2 dest={{ program_dir }}/{{ module }}/init_zookeeper.sh mode=0755
+
+- name: Init and start server of {{ module }}
+  shell: chdir=/opt {{ item }}
+  with_items:
+    - "cd {{ program_dir }}/{{ module }} && bash init_zookeeper.sh"
+    - "/etc/init.d/zookeeper-server restart"
+  ignore_errors: yes
+
+# supervisor
+#- name: Setup supervisor conf for {{ module }}
+#  template: src=supervisord.conf.j2 dest=/etc/supervisord.conf mode=0644
