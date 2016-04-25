@@ -17,6 +17,6 @@ zookeeper_url: "{% for host in groups['zookeepers'] %}{{ hostvars[host].ansible_
 # dashboard
 coordinator:  "zookeeper"
 product:      "test-codis"
-dashboard_port: "18088"
+dashboard_port: "18087"
 dashboard_addr: "{{ hostvars[groups['codis-dashboard'][0]]['ansible_ssh_host'] }}:{{ dashboard_port }}"
 dashboard_host: "{{ hostvars[groups['codis-dashboard'][0]] }}"
