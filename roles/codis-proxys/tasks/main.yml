@@ -11,6 +11,9 @@
 - name: Setup {{ module }} cfg file.
   template: src=config.ini.j2 dest={{ program_dir }}/{{ module }}/config.ini mode=0644
 
+- name: Copy control script to remote host
+  copy: src=control dest={{ program_dir }}/{{ module }}/control mode=755
+
 # supervisor
 #- name: Setup supervisor conf for {{ module }}
 #  template: src=supervisord.conf.j2 dest=/etc/supervisord.conf mode=0644

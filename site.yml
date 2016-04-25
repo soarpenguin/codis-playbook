@@ -26,5 +26,3 @@
     - { role: common, tags: ["common"] }
     - { role: codis-servers, redis_port: 6379, tags: ["codis-servers"] }
     - { role: codis-servers, redis_port: 6380, tags: ["codis-servers"] }
-
-
