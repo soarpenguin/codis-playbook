@@ -7,6 +7,7 @@
     - "mkdir -p {{program_dir}}/{{module}}"
     - "[ -f {{program_dir}}/{{module}}/codis-server ] || ( cd {{program_dir}}/{{module}} && wget -N {{download_url}}/codis/codis.tar.gz && tar -zxf codis.tar.gz )"
     - "mkdir -p {{program_dir}}/{{module}}/etc"
+    - "mkdir -p {{opt_log_dir}}/redis"
   ignore_errors: no
 
 - name: Setup {{ module }} cfg file.

@@ -187,7 +187,7 @@ rdbchecksum yes
 # The Append Only File will also be created inside this directory.
 # 
 # Note that you must specify a directory here, not a file name.
-dir /var/lib/redis
+dir {{program_dir}}/{{module}}
 
 ################################# REPLICATION #################################
 
@@ -397,7 +397,7 @@ slave-priority 100
 # output buffers (but this is not needed if the policy is 'noeviction').
 #
 # maxmemory <bytes>
-maxmemory 55gb
+maxmemory 16gb
 
 # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
 # is reached. You can select among five behaviors:
