@@ -1,5 +1,5 @@
 ---
-# file:roles/codis-proxys/tasks/main.yml
+# file:roles/codis-server/tasks/main.yml
 
 - name: Init and start server of {{ module }}
   shell: chdir=/opt {{ item }}
