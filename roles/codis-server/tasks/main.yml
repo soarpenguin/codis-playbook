@@ -11,7 +11,7 @@
   ignore_errors: no
 
 - name: Setup {{ module }} cfg file.
-  template: src=redis.conf.j2 dest={{ program_dir }}/{{ module }}/etc/redis_{{redis_port}}.conf mode=0644
+  template: src=redis.conf.j2 dest={{ program_dir }}/{{ module }}/etc/redis_{{redis_port}}.conf owner={{deploy_user}} group={{deploy_user} mode=0644
 
 # supervisor
 #- name: Setup supervisor conf for {{ module }}

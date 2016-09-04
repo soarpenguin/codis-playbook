@@ -10,13 +10,13 @@
   ignore_errors: yes
 
 - name: Setup {{ module }} myid file.
-  template: src=zoo_id.j2 dest=/etc/zookeeper/conf.dist/myid mode=0644
+  template: src=zoo_id.j2 dest=/etc/zookeeper/conf.dist/myid owner={{deploy_user}} group={{deploy_user} mode=0644
 
 - name: Setup {{ module }} cfg file.
-  template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf.dist/zoo.cfg mode=0644
+  template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf.dist/zoo.cfg owner={{deploy_user}} group={{deploy_user} mode=0644
 
 - name: Copy init_zookeeper.sh to remote host
-  template: src=init_zookeeper.sh.j2 dest={{ program_dir }}/{{ module }}/init_zookeeper.sh mode=0755
+  template: src=init_zookeeper.sh.j2 dest={{ program_dir }}/{{ module }}/init_zookeeper.sh owner={{deploy_user}} group={{deploy_user} mode=0755
 
 - name: Init and start server of {{ module }}
   shell: chdir=/opt {{ item }}
